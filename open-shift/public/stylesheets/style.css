@@ -1,0 +1,93 @@
+body {
+  background: #ededed;
+}
+
+#modal {
+  font-family: "Overpass";
+  color: #bbb;
+  background: white;
+  width: 500px;
+  resize: both;
+  overflow: auto;
+  overflow-x: hidden;
+  margin: auto;
+  vertical-align: middle;
+  margin-top: 10%;
+}
+
+.nav {
+  /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#c10003+0,980002+60,600800+100 */
+  background: rgb(193,0,3); /* Old browsers */
+  background: -moz-linear-gradient(top, rgba(193,0,3,1) 0%, rgba(152,0,2,1) 60%, rgba(96,8,0,1) 100%); /* FF3.6-15 */
+  background: -webkit-linear-gradient(top, rgba(193,0,3,1) 0%,rgba(152,0,2,1) 60%,rgba(96,8,0,1) 100%); /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(to bottom, rgba(193,0,3,1) 0%,rgba(152,0,2,1) 60%,rgba(96,8,0,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#c10003', endColorstr='#600800',GradientType=0 ); /* IE6-9 */
+  border-bottom: 1px solid #ededed;
+  color: white;
+  width: 100%;
+  height: 50px;
+}
+
+.logo {
+  display: inline-flex;
+  height: 100%;
+  line-height: 3;
+  padding-left: 15px;
+}
+
+.item {
+  float: right;
+  margin: 0px;
+  padding-left: 15px;
+  padding-right: 15px;
+  border-color: #ededed;
+  border-style: solid;
+  border-right: none;
+  border-width: thin;
+  font-weight: lighter;
+  line-height: 3;
+  height: 100%;
+}
+
+.selected-item {
+  height: 98%;
+  /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#960002+0,960002+56,530001+100,000000+100 */
+  background: rgb(150,0,2); /* Old browsers */
+  background: -moz-radial-gradient(center, ellipse cover, rgba(150,0,2,1) 0%, rgba(150,0,2,1) 56%, rgba(83,0,1,1) 100%, rgba(0,0,0,1) 100%); /* FF3.6-15 */
+  background: -webkit-radial-gradient(center, ellipse cover, rgba(150,0,2,1) 0%,rgba(150,0,2,1) 56%,rgba(83,0,1,1) 100%,rgba(0,0,0,1) 100%); /* Chrome10-25,Safari5.1-6 */
+  background: radial-gradient(ellipse at center, rgba(150,0,2,1) 0%,rgba(150,0,2,1) 56%,rgba(83,0,1,1) 100%,rgba(0,0,0,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#960002', endColorstr='#000000',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+}
+
+.panel-body {
+  padding: 15px;
+  color: #333A3F;
+}
+
+h2 {
+  margin-top: 5px;
+  font-weight: 600;
+}
+
+.panel-text {
+  margin-bottom: 20px;
+}
+
+td.label {
+  width: 150px;
+  padding: 7px;
+}
+
+td.content {
+  font-weight: lighter;
+}
+
+.active-status {
+  color: white;
+  font-weight: lighter;
+  background: #008A00;
+  margin-top: 7px;
+  display: inline-block;
+  padding: 0px 4px;
+  border-radius: 5px;
+}
