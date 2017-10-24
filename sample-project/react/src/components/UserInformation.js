@@ -9,7 +9,8 @@ const UserInformation = props => {
     company = <CompanyInformation company={user.company} />
   }
 
-  let handleBookmark = () => {
+  let handleBookmark = (event) => {
+    event.preventDefault();
     props.bookmarkUsers(props.user)
   }
 

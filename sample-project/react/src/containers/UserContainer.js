@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
 import UserTile from '../components/UserTile';
+import Bookmarks from '../components/Bookmarks';
+import { browserHistory } from 'react-router';
 
 class UserContainer extends Component {
   constructor(props){
     super(props);
     this.state = {
-      users: [],
-      bookmarkedUsers: []
+      users: []
     }
-    this.bookmarkUsers = this.bookmarkUsers.bind(this);
   }
 
   componentDidMount(){
@@ -20,16 +20,7 @@ class UserContainer extends Component {
       this.setState({ users: users})
     })
   }
-
-  bookmarkUsers(user) {
-    debugger
-    let previous = this.state.bookmarkUsers;
-    this.setState({ bookmarkUsers: previous.push(user) })
-  }
-
   render(){
-    console.log(this.state.bookmarkedUsers)
-
     let alphabetizedUsersDesc = this.state.users.sort(function(a, b){
       if(a.name < b.name) return 1;
       if(a.name > b.name) return -1;
@@ -42,25 +33,26 @@ class UserContainer extends Component {
           key={user.id}
           id={user.id}
           user={user}
-          bookmarkUsers={this.bookmarkUsers}
         />
       )
     })
 
     return(
-      <table>
-        <thead>
-          <tr>
-            <th>Name</th>
-            <th>Username</th>
-            <th>E-mail</th>
-            <th>Address</th>
-          </tr>
-        </thead>
-        <tbody>
-          {users}
-        </tbody>
-      </table>
+      <div>
+        <table>
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Username</th>
+              <th>E-mail</th>
+              <th>Address</th>
+            </tr>
+          </thead>
+          <tbody>
+            {users}
+          </tbody>
+        </table>
+      </div>
     )
   }
 }

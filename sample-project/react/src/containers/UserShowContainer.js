@@ -1,12 +1,15 @@
 import React, { Component } from 'react';
+import { browserHistory } from 'react-router';
 import UserInformation from '../components/UserInformation';
 
 class UserShowContainer extends Component {
   constructor(props){
     super(props);
     this.state = {
-      userInfo: {}
+      userInfo: {},
+      bookmarkedUsers: []
     }
+    this.bookmarkUsers = this.bookmarkUsers.bind(this);
   }
 
   componentDidMount(){
@@ -20,12 +23,18 @@ class UserShowContainer extends Component {
     })
   }
 
+  bookmarkUsers(user) {
+    this.setState({ bookmarkedUsers: this.state.bookmarkedUsers.push(user) })
+    browserHistory.push({pathname: `/bookmarks`, state: this.state.bookmarkedUsers });
+  }
+
   render(){
     return(
       <UserInformation
         id={this.state.userInfo.id}
         name={this.state.userInfo.name}
         user={this.state.userInfo}
+        bookmarkUsers={this.bookmarkUsers}
       />
     )
   }
