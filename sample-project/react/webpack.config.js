@@ -1,33 +1,22 @@
-var webpack = require('webpack');
-
-module.exports = {
-  entry: {
-    path: __dirname+'/src/main.js'
-  },
+var config = {
+  entry: __dirname+'/src/main.js',
   output: {
     path: __dirname+'/../public',
     filename: 'bundle.js'
   },
   module: {
-    rules: [
+    loaders: [
       {
-        test: /\.scss$/,
-        use: [
-          "style-loader",
-          "css-loader",
-          "sass-loader"
-        ]
-      },
-      {
-        test: /\.jsx?$/,
-        exclude: /node_modules/,
-        loader: 'babel-loader'
+        loader: 'babel-loader',
+        query: {
+          presets: ['react', 'es2015']
+        },
+        test: /\.js$/,
+        exclude: /node_modules/
       }
     ]
   },
-  devtool: 'eval-source-map',
-  devServer: {
-    contentBase: './public',
-    inline: true
-  }
+  devtool: 'eval-source-map'
 }
+
+module.exports = config;

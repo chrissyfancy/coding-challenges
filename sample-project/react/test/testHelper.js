@@ -1,15 +1,13 @@
-import { shallow, mount } from 'enzyme';
+import { mount } from 'enzyme';
 import jasmineEnzyme from 'jasmine-enzyme';
 import React from 'react';
-import $ from 'jquery';
-import 'jasmine-ajax';
+import "babel-polyfill";
+import "whatwg-fetch";
 
 Object.assign(global, {
-  jasmineEnzyme,
   mount,
-  React,
-  shallow,
-  $
+  jasmineEnzyme,
+  React
 });
 
 beforeEach(() => {
