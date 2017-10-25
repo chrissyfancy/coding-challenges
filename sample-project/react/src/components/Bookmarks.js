@@ -2,39 +2,19 @@ import React, { Component } from 'react';
 import { browserHistory } from 'react-router';
 import { Link } from 'react-router'
 
-class Bookmarks extends Component {
-  constructor(props){
-    super(props);
-    this.state = {
-      links: []
-    }
-    this.setLinks = this.setLinks.bind(this);
+const Bookmarks = props => {
+  let links;
+  if(props.users) {
+    links = props.users.map(user => {
+      return <Link to={`/users/${user.id}`}>{user.name}</Link>
+    })
   }
 
-  setLinks(link) {
-    this.setState({ links: this.state.links.push(link) })
-  }
-
-  render() {
-    let users
-    if (this.props.location) {
-      users = this.props.location.state
-    }
-
-    let links;
-    if(users) {
-      links = users.map(user => {
-        this.setLinks(user.name)
-        return <Link to={`/users/${user.id}`}>{user.name}</Link>
-      })
-    }
-
-    return(
-      <div>
+  return(
+    <div className="bookmarks">
       {links}
-      </div>
-    )
-  }
+    </div>
+  )
 }
 
 export default Bookmarks;

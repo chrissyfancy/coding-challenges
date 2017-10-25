@@ -8,8 +8,10 @@ import Bookmarks from './Bookmarks'
 const NavBar = props => {
   return(
     <div>
-      <BackButton />
-      <Link to='/'>All Users</Link>
+      <div className="nav">
+        <BackButton />
+        <Link to='/'>All Users</Link>
+      </div>
       {props.children}
     </div>
   )

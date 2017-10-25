@@ -7,6 +7,11 @@ const UserTile = props => {
   let streetAddress = `${address.street}, ${address.suite}`
   let stateAddress = `${address.city}, ${address.zipcode}`
 
+  let handleBookmark = (event) => {
+    event.preventDefault();
+    props.bookmarkUser(user)
+  }
+
   return(
     <tr>
       <td><Link to={`/users/${props.id}`}>{user.name}</Link></td>
@@ -15,6 +20,11 @@ const UserTile = props => {
       <td>
         <div>{streetAddress}</div>
         <div>{stateAddress}</div>
+      </td>
+      <td>
+        <form onSubmit={handleBookmark}>
+          <input className="button" type="submit" value="Bookmark" />
+        </form>
       </td>
     </tr>
   )

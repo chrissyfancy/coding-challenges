@@ -1,14 +1,15 @@
 import React, { Component } from 'react';
 import UserTile from '../components/UserTile';
-import Bookmarks from '../components/Bookmarks';
-import { browserHistory } from 'react-router';
+import Bookmarks from '../components/Bookmarks'
 
 class UserContainer extends Component {
   constructor(props){
     super(props);
     this.state = {
-      users: []
+      users: [],
+      bookmarkedUsers: []
     }
+    this.bookmarkUser = this.bookmarkUser.bind(this);
   }
 
   componentDidMount(){
@@ -20,6 +21,13 @@ class UserContainer extends Component {
       this.setState({ users: users})
     })
   }
+
+  bookmarkUser(user) {
+    if(!this.state.bookmarkedUsers.includes(user)) {
+      this.setState({ bookmarkedUsers: this.state.bookmarkedUsers.concat(user)})
+    }
+  }
+
   render(){
     let alphabetizedUsersDesc = this.state.users.sort(function(a, b){
       if(a.name < b.name) return 1;
@@ -33,12 +41,14 @@ class UserContainer extends Component {
           key={user.id}
           id={user.id}
           user={user}
+          bookmarkUser={this.bookmarkUser}
         />
       )
     })
 
     return(
       <div>
+        <Bookmarks users={this.state.bookmarkedUsers} />
         <table>
           <thead>
             <tr>
