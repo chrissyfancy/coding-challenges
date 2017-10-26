@@ -1,48 +1,66 @@
-var Code = require("../code");
+var Code = require("../src/code");
 var expect = require('chai').expect
 
-var foo = 1;
-before(function(done) {
-  setTimeout(function(){
-    foo = 2;
-    done();
-  }, 500)
-});
+// var foo = 1;
+// before(function(done) {
+//   setTimeout(function(){
+//     foo = 2;
+//     done();
+//   }, 500)
+// });
+//
+// describe("Async setup", function(done){
+//
+//   it("should have foo equal to 2.", function(done){
+//     expect(foo).to.be.equal(2);
+//     done();
+//   });
+//
+//   it("should have foo not equal 3.", function(done){
+//     expect(foo).to.be.not.equal(3);
+//     done();
+//   });
+//
+// });
 
-describe("Async setup", function(done){
+describe('code', () => {
+  let a;
+  let b;
+  let c;
 
-  it("should have foo equal to 2.", function(done){
-    expect(foo).to.be.equal(2);
-    done();
+  beforeEach(() => {
+    a = 1;
+    b = 2;
+    c = 3
   });
 
-  it("should have foo not equal 3.", function(done){
-    expect(foo).to.be.not.equal(3);
-    done();
+  describe('remoteMathService', () => {
+    it('should return the integer 3', () => {
+      let result = remoteMathService();
+      setTimeout(function () {
+        expect(result).to.be.equal(a);
+        done();
+      }, 1000);
+    });
+  })
+
+  describe('callOneService', function() {
+    it('should return the integer 1', function(done) {
+      let result = callOneService();
+      setTimeout(function () {
+        expect(result).to.be.equal(a);
+        done();
+      }, 1500);
+    });
   });
 
-});
-
-describe('#remoteMathService()', function() {
-  it('should return the sum of callOneService and callTwoService', function(done) {
-    setTimeout(function () {
-      expect(Code.remoteMathService()).to.equal("correct");
-      done();
-    }, 1000);
-  });
-});
-
-describe('#callOneService()', function() {
-  it('should return the integer 1', function(done) {
-    setTimeout(function () {
-      expect(Code.callOneService()).to.equal(1);
-      done();
-    }, 1000);
-  });
-});
-
-describe('#callTwoService()', function() {
-  it('should return the integer 2', function(done) {
-    expect(Code.callTwoService()).to.equal(2);
+  describe('callTwoService', function() {
+    it('should return the integer 2', function(done) {
+      let result = callTwoService();
+      setTimeout(function () {
+        expect(result).to.be.equal(b);
+        done();
+      }, 3000);
+    });
   });
 });
