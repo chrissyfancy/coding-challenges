@@ -1,0 +1,7 @@
+DROP TABLE IF EXISTS bookmarks;
+
+CREATE TABLE bookmarks (
+  id SERIAL PRIMARY KEY,
+  user_name VARCHAR(255) NOT NULL UNIQUE,
+  user_id INT NOT NULL
+);
