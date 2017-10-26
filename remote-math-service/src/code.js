@@ -11,13 +11,13 @@ remoteMathService = (cb) => {
   }, 2000);
 }
 
-var callOneService = (cb) => {
+function callOneService(cb) {
   setTimeout(function() {
     return cb(undefined, 1);
   }, 1000);
 }
 
-var callTwoService = (cb) => {
+function callTwoService(cb) {
   setTimeout(function() {
     return cb(undefined, 2);
   }, 1000);
