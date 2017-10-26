@@ -10,6 +10,7 @@ class UserContainer extends Component {
       bookmarkedUsers: []
     }
     this.bookmarkUser = this.bookmarkUser.bind(this);
+    this.fetchBookmarks = this.fetchBookmarks.bind(this);
   }
 
   componentDidMount(){
@@ -20,12 +21,42 @@ class UserContainer extends Component {
     }).then(users => {
       this.setState({ users: users})
     })
+    this.fetchBookmarks();
+  }
+
+  fetchBookmarks() {
+    fetch("/bookmarks")
+    .then(response => {
+      let parsed = response.json()
+      return parsed
+    }).then(users => {
+      this.setState({ bookmarkedUsers: users})
+    })
   }
 
   bookmarkUser(user) {
-    if(!this.state.bookmarkedUsers.includes(user)) {
-      this.setState({ bookmarkedUsers: this.state.bookmarkedUsers.concat(user)})
-    }
+    fetch(`/bookmarks`, {
+      method: "POST",
+      credentials: "same-origin",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(user)
+    })
+    .then(response => {
+      if (response.ok) {
+        return response;
+      } else {
+        let errorMessage = `${response.status} (${response.statusText})`;
+        let error = new Error(errorMessage);
+        throw(error);
+      }
+    })
+    .then(response => response.json())
+    .then(users => {
+      this.setState({ bookmarkedUsers: users })
+    })
+    .catch(error => console.error(`Error in fetch: ${error.message}`));
   }
 
   render(){
