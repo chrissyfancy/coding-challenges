@@ -6,7 +6,7 @@ const Bookmarks = props => {
   let links;
   if(props.users) {
     links = props.users.map(user => {
-      return <Link to={`/users/${user.id}`}>{user.name}</Link>
+      return <Link to={`/users/${user.user_id}`} key={user.user_id}>{user.user_name}</Link>
     })
   }
 
