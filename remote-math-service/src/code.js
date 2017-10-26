@@ -1,4 +1,4 @@
-function remoteMathService(cb) {
+remoteMathService = (cb) => {
   var one, two;
   callOneService(function(err, num) {
     one = num;
@@ -11,16 +11,16 @@ function remoteMathService(cb) {
   }, 2000);
 }
 
-function callOneService(cb) {
+var callOneService = (cb) => {
   setTimeout(function() {
     return cb(undefined, 1);
   }, 1000);
 }
 
-function callTwoService(cb) {
+var callTwoService = (cb) => {
   setTimeout(function() {
     return cb(undefined, 2);
-  }, 1500);
+  }, 1000);
 }
 
 remoteMathService(function(err, answer) {
