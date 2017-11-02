@@ -47,7 +47,6 @@ describe('UserShowContainer', () => {
   });
 
   it('should have access to the user information', () => {
-    console.log(wrapper.props().props);
     expect(wrapper.props().props).toEqual({
       address: {
           street: "Hoeger Mall",
