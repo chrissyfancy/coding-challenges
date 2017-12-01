@@ -1,26 +1,35 @@
-remoteMathService = (cb) => {
-  var one, two;
-  callOneService(function(err, num) {
-    one = num;
-  });
-  callTwoService(function(err, num) {
-    two = num;
-  });
-  setTimeout(function() {
-    return cb(undefined, one + two);
-  }, 2000);
+let remoteMathService = (cb) => {
+  callOneService((err, one) => {
+    callTwoService((err, two) => {
+      return cb(undefined, one + two);
+    })
+  })
 }
 
-function callOneService(cb) {
-  setTimeout(function() {
-    return cb(undefined, 1);
-  }, 1000);
+let callOneService = (cb) => {
+  return new Promise((resolve, reject) => {
+    cb(undefined, 1);
+    if (cb) {
+      resolve()
+    } else {
+      reject()
+    }
+  })
+  .then(response => { return response })
+  .catch(error => { console.error(`Error in callOneService: ${error} `)})
 }
 
-function callTwoService(cb) {
-  setTimeout(function() {
-    return cb(undefined, 2);
-  }, 1000);
+let callTwoService = (cb) => {
+  return new Promise((resolve, reject) => {
+    cb(undefined, 2);
+    if (cb) {
+      resolve()
+    } else {
+      reject()
+    }
+  })
+  .then(response => { return response })
+  .catch(error => { console.error(`Error in callTwoService: ${error} `)})
 }
 
 remoteMathService(function(err, answer) {
@@ -31,3 +40,7 @@ remoteMathService(function(err, answer) {
     console.log("correct");
   }
 });
+
+exports.remoteMathService = remoteMathService;
+exports.callOneService = callOneService;
+exports.callTwoService = callTwoService;
